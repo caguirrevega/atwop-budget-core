@@ -3,9 +3,8 @@ package com.atwop.katanga.budget.usecase;
 import com.atwop.katanga.budget.model.BudgetFactory;
 import com.atwop.katanga.budget.model.BudgetPresenter;
 import com.atwop.katanga.budget.model.BudgetRepositoryGateway;
-import com.atwop.katanga.budget.model.BudgetRepositoryRequestModel;
+import com.atwop.katanga.budget.model.BudgetRepositoryModel;
 import com.atwop.katanga.budget.model.BudgetRequestModel;
-import com.atwop.katanga.budget.model.BudgetResponseModel;
 import com.atwop.katanga.budget.model.PersonalBudget;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +44,7 @@ public class BudgetCreationUseCaseTest {
 
         verify(presenter, times(1)).prepareSuccessResponse(anyString(), anyString());
         verify(budgetFactory, times(1)).create(any(Float.class), any());
-        verify(budgetRepositoryGateway, times(1)).save(any(BudgetRepositoryRequestModel.class));
+        verify(budgetRepositoryGateway, times(1)).save(any(BudgetRepositoryModel.class));
 
     }
 }

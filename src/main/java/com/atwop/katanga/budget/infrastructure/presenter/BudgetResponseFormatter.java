@@ -1,4 +1,4 @@
-package com.atwop.katanga.budget.infrastructure.datasource.jpa;
+package com.atwop.katanga.budget.infrastructure.presenter;
 
 import com.atwop.katanga.budget.model.BudgetPresenter;
 import com.atwop.katanga.budget.model.BudgetResponseModel;

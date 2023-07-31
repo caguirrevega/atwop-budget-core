@@ -1,4 +1,4 @@
-package com.atwop.katanga.budget.infrastructure.datasource.jpa;
+package com.atwop.katanga.budget.infrastructure.rest;
 
 import com.atwop.katanga.budget.model.BudgetInputBoundary;
 import com.atwop.katanga.budget.model.BudgetRequestModel;

@@ -5,7 +5,7 @@ import com.atwop.katanga.budget.model.BudgetFactory;
 import com.atwop.katanga.budget.model.BudgetInputBoundary;
 import com.atwop.katanga.budget.model.BudgetPresenter;
 import com.atwop.katanga.budget.model.BudgetRepositoryGateway;
-import com.atwop.katanga.budget.model.BudgetRepositoryRequestModel;
+import com.atwop.katanga.budget.model.BudgetRepositoryModel;
 import com.atwop.katanga.budget.model.BudgetRequestModel;
 import com.atwop.katanga.budget.model.BudgetResponseModel;
 
@@ -29,11 +29,13 @@ public class BudgetCreationUseCase implements BudgetInputBoundary {
         if (messageErrorValidation != null) {
              return presenter.prepareFailResponse(messageErrorValidation);
         }
-        BudgetRepositoryRequestModel budgetRepositoryRequestModel = new BudgetRepositoryRequestModel(budgetRequestModel.getUserId(),
-                budgetRequestModel.getAmount());
-        repositoryGateway.save(budgetRepositoryRequestModel);
+        BudgetRepositoryModel budgetRepositoryModel = new BudgetRepositoryModel(
+                budget.getId(), budget.getUserId(), budget.getAmount(), budget.getDateCreated(),
+                budget.getLastUpdated(), budget.getDateClosed());
 
-        return presenter.prepareSuccessResponse(budgetRepositoryRequestModel.getId(),
-                budgetRepositoryRequestModel.getUserId());
+        repositoryGateway.save(budgetRepositoryModel);
+
+        return presenter.prepareSuccessResponse(budgetRepositoryModel.getId(),
+                budgetRepositoryModel.getUserId());
     }
 }

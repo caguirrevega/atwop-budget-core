@@ -23,13 +23,36 @@ public class PersonalBudget implements Budget {
 
     @Override
     public String validate() {
-        String messageError = null;
         if (amount == null || amount <= 0) {
-            messageError = "amount is invalid";
+            return "amount is invalid";
         }
         if (userId == null || userId.isEmpty()) {
-            messageError = "userId is invalid";
+            return "userId is invalid";
         }
-        return messageError;
+        return null;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Float getAmount() {
+        return amount;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public LocalDateTime getDateClosed() {
+        return dateClosed;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

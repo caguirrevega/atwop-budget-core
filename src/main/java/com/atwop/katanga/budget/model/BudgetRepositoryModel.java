@@ -1,9 +1,8 @@
 package com.atwop.katanga.budget.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-public class BudgetRepositoryRequestModel {
+public class BudgetRepositoryModel {
     private String id;
     private String userId;
     private Float amount;
@@ -11,12 +10,14 @@ public class BudgetRepositoryRequestModel {
     private LocalDateTime lastUpdated;
     private LocalDateTime dateClosed;
 
-    public BudgetRepositoryRequestModel(String userId, Float amount) {
+    public BudgetRepositoryModel(String id, String userId, Float amount, LocalDateTime dateCreated,
+                                 LocalDateTime lastUpdated, LocalDateTime dateClosed) {
         this.userId = userId;
         this.amount = amount;
-        this.id = UUID.randomUUID().toString();
-        this.dateCreated = LocalDateTime.now();
-        this.lastUpdated = LocalDateTime.now();
+        this.id = id;
+        this.dateCreated = dateCreated;
+        this.lastUpdated = lastUpdated;
+        this.dateClosed = dateClosed;
     }
 
     public String getId() {
