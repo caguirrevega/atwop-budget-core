@@ -1,6 +1,9 @@
 package com.atwop.katanga.budget.model;
 
+import com.atwop.katanga.movement.model.MovementRepositoryRequestModel;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class BudgetRepositoryModel {
     private String id;
@@ -9,15 +12,17 @@ public class BudgetRepositoryModel {
     private LocalDateTime dateCreated;
     private LocalDateTime lastUpdated;
     private LocalDateTime dateClosed;
+    private List<MovementRepositoryRequestModel> movements;
 
     public BudgetRepositoryModel(String id, String userId, Float amount, LocalDateTime dateCreated,
-                                 LocalDateTime lastUpdated, LocalDateTime dateClosed) {
+                                 LocalDateTime lastUpdated, LocalDateTime dateClosed, List<MovementRepositoryRequestModel> movements) {
         this.userId = userId;
         this.amount = amount;
         this.id = id;
         this.dateCreated = dateCreated;
         this.lastUpdated = lastUpdated;
         this.dateClosed = dateClosed;
+        this.movements = movements;
     }
 
     public String getId() {
@@ -40,7 +45,6 @@ public class BudgetRepositoryModel {
         return amount;
     }
 
-
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
@@ -49,15 +53,11 @@ public class BudgetRepositoryModel {
         return lastUpdated;
     }
 
-    public void setLastUpdated(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-
     public LocalDateTime getDateClosed() {
         return dateClosed;
     }
 
-    public void setDateClosed(LocalDateTime dateClosed) {
-        this.dateClosed = dateClosed;
+    public List<MovementRepositoryRequestModel> getMovements() {
+        return movements;
     }
 }

@@ -8,6 +8,8 @@ import com.atwop.katanga.budget.model.BudgetRequestModel;
 import com.atwop.katanga.budget.model.PersonalBudget;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -25,25 +27,25 @@ public class BudgetCreationUseCaseTest {
 
     @Test
     void givenBudgetWhenIsInvalidThenPrepareFailResponse() {
-        BudgetRequestModel budgetRequestModel = new BudgetRequestModel(null, 300F);
-        when(budgetFactory.create(any(Float.class), any())).thenReturn(
-                new PersonalBudget(budgetRequestModel.getAmount(), budgetRequestModel.getUserId()));
+        BudgetRequestModel budgetRequestModel = new BudgetRequestModel(null, 300F, null);
+        when(budgetFactory.create(any(Float.class), any(), any())).thenReturn(
+                new PersonalBudget(budgetRequestModel.getAmount(), budgetRequestModel.getUserId(), Collections.emptyList()));
         budgetCreationUseCase.create(budgetRequestModel);
 
         verify(presenter, times(1)).prepareFailResponse(anyString());
-        verify(budgetFactory, times(1)).create(any(Float.class), any());
+        verify(budgetFactory, times(1)).create(any(Float.class), any(), any());
 
     }
 
     @Test
     void givenBudgetWhenIsValidThenPrepareSuccessfulResponse() {
-        BudgetRequestModel budgetRequestModel = new BudgetRequestModel("123", 300F);
-        when(budgetFactory.create(any(Float.class), any())).thenReturn(
-                new PersonalBudget(budgetRequestModel.getAmount(), budgetRequestModel.getUserId()));
+        BudgetRequestModel budgetRequestModel = new BudgetRequestModel("123", 300F, Collections.emptyList());
+        when(budgetFactory.create(any(Float.class), any(), any())).thenReturn(
+                new PersonalBudget(budgetRequestModel.getAmount(), budgetRequestModel.getUserId(), Collections.emptyList()));
         budgetCreationUseCase.create(budgetRequestModel);
 
         verify(presenter, times(1)).prepareSuccessResponse(anyString(), anyString());
-        verify(budgetFactory, times(1)).create(any(Float.class), any());
+        verify(budgetFactory, times(1)).create(any(Float.class), any(), any());
         verify(budgetRepositoryGateway, times(1)).save(any(BudgetRepositoryModel.class));
 
     }

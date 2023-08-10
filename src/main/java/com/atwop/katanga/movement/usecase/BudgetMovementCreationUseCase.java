@@ -1,7 +1,6 @@
 package com.atwop.katanga.movement.usecase;
 
 import com.atwop.katanga.budget.model.BudgetRepositoryGateway;
-import com.atwop.katanga.movement.model.BudgetMovement;
 import com.atwop.katanga.movement.model.Movement;
 import com.atwop.katanga.movement.model.MovementFactory;
 import com.atwop.katanga.movement.model.MovementInputBoundary;
